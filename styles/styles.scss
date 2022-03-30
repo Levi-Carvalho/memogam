@@ -1,0 +1,136 @@
+@import "cartas.scss";
+@import "modal.scss";
+
+$azul-escuro: #04202e;
+$vermelho-massa: rgba(220, 20, 60, 1);
+$verde-bonito: rgba(60, 179, 113, 1);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: $azul-escuro;
+}
+
+.container {
+  max-width: 1440px;
+  margin: auto;
+}
+
+.capa {
+  background: $vermelho-massa  url(../img/kaguya-fundo.png) 40% 20% no-repeat;
+  background-size: cover;
+  padding: 40px 20px;
+  color: white;
+  font-family: 'Bebas Neue', sans-serif;
+  font-style: italic;
+}
+
+.retangulo {
+  width: 1080px;
+  height: 93vh;
+  max-height: 535px;
+  border-radius: 20px;
+  box-shadow: 0 0 4px black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.mem-gam {
+  font-size: 2em;
+  font-weight: 400;
+}
+
+.cards-type {
+  font-weight: 300;
+  font-size: 1rem;
+}
+
+.nav {
+  margin-top: 80px;
+}
+
+.btn-menu {
+  background: none;
+  border: none;
+  color: white;
+  font-style: inherit;
+  font-size: 1em;
+  display: block;
+  margin: 10px 0;
+  padding: 5px;
+  padding-right: 15px;
+  transform: all;
+  transition-duration: 0.5s;
+  &:hover{
+    padding-left: 15px;
+    background: rgba(255, 255, 255, 0.125);
+  }
+}
+
+.game {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: $vermelho-massa url(../img/kaguya-fundo.png) no-repeat center center;
+  background-size: cover;
+  display: block;
+  overflow: hidden;
+}
+
+.info {
+  width: 180px;
+  height: 100%;
+  float: left;
+  background: rgba(220, 20, 60, 0.7);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+}
+
+.cards-container {
+  float: right;
+  width: 900px;
+  height: 100%;
+  padding-top: 9px;
+  padding-left: 25px;
+}
+
+.hidden {
+  display: none;
+}
+
+.opacity {
+  opacity: 0%;
+}
+
+.box {
+  font-family: 'Bebas neue';
+  background: rgba(255, 255, 255, 0.425);
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 15px;
+  font-size: 1.15em;
+  color: white;
+  &:last-of-type {
+    margin-top: 230px;
+    color: rgba(243, 70, 105, 0.795);
+    text-align: center;
+    &:hover {
+      background: rgba(243, 70, 104, 0.7);
+      box-shadow: 0 0 4px white;
+      color: white;
+    }
+  }
+  .btn-close {
+    background: none;
+    border: none;
+    font: inherit;
+    color: inherit;
+  }
+}

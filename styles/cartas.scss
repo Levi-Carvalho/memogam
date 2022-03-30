@@ -1,0 +1,31 @@
+.card {
+  width: 120px;
+  height: 159px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 1);
+  transition-duration: 1s;
+  transform-style: preserve-3d;
+  display: inline-block;
+  margin: 5px 11px;
+  img{
+    width: 120px;
+    border: 2px solid white;
+    border-radius: 10px;
+  }
+}
+
+.face {
+  position: absolute;
+}
+
+.front {
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+}
+
+.back {
+  backface-visibility: hidden;
+}
+
+.flip {
+  transform: rotateY(180deg);
+}
