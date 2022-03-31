@@ -28,24 +28,18 @@ restart.addEventListener('click', function(){
   init();
 })
 
-menu.addEventListener('mouseover', function(e){
-  changeOpacity(e, 0.3);
-})
-
-menu.addEventListener('mouseout', function(e){
-  changeOpacity(e, 1);
-})
+menu.addEventListener('mouseover', changeOpacity.bind(0.3));
+menu.addEventListener('mouseout', changeOpacity.bind(1));
 
 function changeOpacity(e, opacity) {
   const menuList = document.querySelectorAll('.btn-menu');
   if (e.target.classList.contains('btn-menu')){
     menuList.forEach(el => {
       if (el === e.target) return;
-      el.style.opacity = opacity;
+      el.style.opacity = this;
     })
   }
 }
-
 
 function closeModal() {
   setTimeout(function(){
