@@ -61,15 +61,15 @@ document.querySelector('.game').addEventListener("click", function(e){
 })
 
 const Kaguya = [
-'img/fujiwara.jpg',
-'img/hayasaka.jpg',
-'img/ishigami.jpg',
-'img/kaguya-haysaka.jpg',
-'img/kaguya.jpg',
-'img/kei.jpg',
-'img/miku-ishigami.jpg',
-'img/miku.jpg',
-'img/zorão.jpg'
+'img/fujiwara.webp',
+'img/hayasaka.webp',
+'img/ishigami.webp',
+'img/kaguya-haysaka.webp',
+'img/kaguya.webp',
+'img/kei.webp',
+'img/miku-ishigami.webp',
+'img/miku.webp',
+'img/zorão.webp'
 ];
 
 const cardsHTML = Kaguya.flatMap((add, i) => {
@@ -79,7 +79,7 @@ const cardsHTML = Kaguya.flatMap((add, i) => {
       <img src="${add}">
     </div>
     <div class="face front">
-      <img src="img/kaguya-frente.jpg">
+      <img src="img/kaguya-frente.webp">
     </div>
   </div>
   `

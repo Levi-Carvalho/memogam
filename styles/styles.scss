@@ -21,7 +21,7 @@ body {
 }
 
 .capa {
-  background: $vermelho-massa  url(../img/kaguya-fundo.png) 40% 20% no-repeat;
+  background: $vermelho-massa  url(../img/kaguya-fundo.webp) 40% 20% no-repeat;
   background-size: cover;
   padding: 40px 20px;
   color: white;
@@ -78,7 +78,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: $vermelho-massa url(../img/kaguya-fundo.png) no-repeat center center;
+  background: $vermelho-massa url(../img/kaguya-fundo.webp) no-repeat center center;
   background-size: cover;
   display: block;
   overflow: hidden;

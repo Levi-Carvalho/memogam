@@ -8,7 +8,7 @@ btnStart.addEventListener('click', function (){
   game.classList.remove('hidden');
   init();
   const name = prompt('Kimi no na wa:');
-  playerName = (name.length < 21 ? name : false) || '</br> O palhaço caçarola'
+  playerName = (name?.length < 21 ? name : false) || '</br> O palhaço caçarola'; // optional chaining added
   mirutights();
 })
 
