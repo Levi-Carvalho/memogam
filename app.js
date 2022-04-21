@@ -50,6 +50,7 @@ class App extends CommonParts {
   _userLogoff() {
     this._hide(btnStart, btnLogoff);
     this._show(btnLogin, btnSignUp);
+    localStorage.removeItem('logged');
     this.currentUser = '';
   }
 
