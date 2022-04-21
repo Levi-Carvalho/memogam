@@ -20,6 +20,13 @@ class App extends CommonParts {
       let ggame = new Jogo(this.currentUser);
       this._show(game)
     });
+
+    if(localStorage.getItem('logged')){
+      const acc = JSON.parse(localStorage.getItem('logged'));
+      this.currentUser = acc.username ;
+      this._show(btnStart, btnLogoff);
+      this._hide(btnLogin, btnSignUp);
+    }
     
   }
 
@@ -30,10 +37,10 @@ class App extends CommonParts {
       if(acc.username === inputUser.value){
         if(acc.password === inputPass.value){
           this.currentUser = inputUser.value;
-          console.log(this.currentUser);
           this._closeModal();
           this._show(btnStart, btnLogoff)
           this._hide(btnLogin, btnSignUp)
+          localStorage.setItem('logged', JSON.stringify(acc))
         } else {this._warn('Não deu mt certo não, meu patrão, ve se ta tudo certo aí');}
       } else {this._warn('Não deu mt certo não, meu patrão, ve se ta tudo certo aí');}
     })
@@ -59,10 +66,8 @@ class App extends CommonParts {
         const acc = new Account(inputUser.value, inputPass.value);
         accs.push(acc);
         localStorage.setItem('Accounts', JSON.stringify(accs));
-        console.log(accs);
         this._closeModal();
       } else {
-        console.log('não fode, porra');
         this._warn('senha deve conter ao menos 6 caracteres')
         return
       }  
