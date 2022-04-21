@@ -101,9 +101,7 @@ body {
   padding-left: 25px;
 }
 
-.hidden {
-  display: none;
-}
+
 
 .opacity {
   opacity: 0%;
@@ -133,4 +131,9 @@ body {
     font: inherit;
     color: inherit;
   }
+}
+
+
+.hidden {
+  display: none !important;
 }

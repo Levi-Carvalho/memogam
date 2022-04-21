@@ -11,7 +11,9 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Ubuntu:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
-
+		<script>const kaka = ['img/fujiwara.webp','img/hayasaka.webp','img/ishigami.webp','img/kaguya-haysaka.webp','img/kaguya.webp','img/kei.webp','img/miku-ishigami.webp','img/miku.webp','img/zorão.webp'];
+		let Accounts = [{username: 'Levi',password: 'levi123',highscore: 1657,},{username: 'Palhaço Caçarola',password: 'levi123',highscore: 1554,},{username: 'LeviDois',password: 'levi123',highscore: 125,},{username: 'LeviTres',password: 'levi123',highscore: 150,},{username: 'LeviQuatro',password: 'levi123',highscore: 175,},{username: 'LeviCinco',password: 'levi123',highscore: 200,},{username: 'LeviSeis',password: 'levi123',highscore: 225,},{username: 'LeviSete',password: 'levi123',highscore: 250,},{username: 'LeviOito',password: 'levi123',highscore: 275,},{username: 'LeviNove',password: 'levi123',highscore: 300,},{username: 'LeviDez',password: 'levi123',highscore: 325,},{username: 'LeviOnze',password: 'levi123',highscore: 350,},{username: 'LeviDoze',password: 'levi123',highscore: 375,},];</script>
+	
 	</head>
 	<body>
 
@@ -20,11 +22,11 @@
 				<h1 class="mem-gam">Jogo da Memória</h1>
 				<h2 class="cards-type">Kaguya-Sama: Love is War</h2>
 				<nav class="nav">
-					<button class="btn-menu start">&rtrif; Jogar</button>
+					<button class="btn-menu start hidden opacity">&rtrif; Jogar</button>
+					<button class="btn-menu login">&rtrif; Entrar</button>
+					<button class="btn-menu signUp">&rtrif; Cadastrar</button>
 					<button class="btn-menu highscores">&rtrif; Highscores</button>
-					<button class="btn-menu trocar-baralho">&rtrif; Mudar baralho</button>
-					<button class="btn-menu logOn">&rtrif; Entrar</button>
-					<button class="btn-menu logOff hidden">&rtrif; Sair</button>
+					<button class="btn-menu logoff hidden opacity">&rtrif; Sair</button>
 				</nav>
 			</div>
 		</section>
@@ -53,17 +55,47 @@
 			<div class="cards-container"></div>
 		</section>
 
-		<section class="modal hidden opacity">
+		<section class="modal game-over hidden opacity">
 			<h1 class="modal-h1">Não acho que alguém ganhou</h1>
-			<div class="sts-box">
+			<div class="over-ctn">
 				<button class="option-end restart">&#8634; Recomeçar</button>
 				<button class="option-end btn-back">&#8630; Menu</button>
 			</div>
 		</section>
+
+		<section class="modal sign-in-up hidden opacity">
+			<h1 class="modal-h1 modal-h1-sign">Entrar</h1>
+			<div class="login-box">
+				<div class="warning hidden"></div>
+				<input type="text" class="input input-username" placeholder="Nome de usuário"></input>
+				<input  type="password" class="input input-password" placeholder="Senha"></input>
+				<button class="submit submit-login" placeholder="Senha">Entrar</button>
+				<button class="submit submit-signUp" placeholder="Senha">Cadastrar</button>
+			</div>
+		</section>
+
+		<section class="modal show-highscores hidden opacity">
+			<h1 class="modal-h1">Maiores pontuações</h1>
+			<div class="table-cnt">
+				<table>
+					<tr>
+						<th>Rank</th>
+						<th>Jogador</th>
+						<th>Maior Pontuação</th>
+					</tr>
+					<tr>
+						<td>1°</td>
+						<td>Levi</td>
+						<td class="score">1167</td>
+					</tr>
+				</table>
+			</div>
+		</section>
+
 		<div class="overlay hidden opacity"></div>
 
-		<script src="jogo.js"></script>
+		<script src="variables.js"></script>
+		<script src="game.js"></script>
 		<script src="app.js"></script>
-		<script src="updateUI.js"></script>
 	</body>
 </html>

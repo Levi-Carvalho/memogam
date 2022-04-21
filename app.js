@@ -1,51 +1,130 @@
-const btnStart = document.querySelector('.start');
-const restart = document.querySelector('.restart');
-const back = document.querySelector('.btn-back');
-const capa = document.querySelector('.capa');
-const menu = document.querySelector('.nav');
+class App extends CommonParts {
+  constructor() {
+    super();
+    this.currentUser;
+    
+    if(!localStorage.getItem('Accounts')){
+      localStorage.setItem('Accounts', JSON.stringify(Accounts))
+    }
 
-btnStart.addEventListener('click', function (){
-  game.classList.remove('hidden');
-  init();
-  const name = prompt('Kimi no na wa:');
-  playerName = (name?.length < 21 ? name : false) || '</br> O palhaço caçarola'; // optional chaining added
-  mirutights();
-})
+    btnLogin.addEventListener('click', this._userShowLoginModal.bind(this));
+    btnSignUp.addEventListener('click', this._userShowSignUpModal.bind(this));
+    submitSignUp.addEventListener('click', this._createAccount.bind(this));
+    submitLogin.addEventListener('click', this._userLogin.bind(this));
+    overlay.addEventListener('click', this._closeModal.bind(this));
+    menu.addEventListener('mouseover', this._changeOpacity.bind(0.5));
+    menu.addEventListener('mouseout', this._changeOpacity.bind(1));
+    btnHigscores.addEventListener('click', this._showHighscores.bind(this));
+    btnLogoff.addEventListener('click', this._userLogoff.bind(this));
+    btnStart.addEventListener('click', () => {
+      let ggame = new Jogo(this.currentUser);
+      this._show(game)
+    });
+    
+  }
 
-overlay.addEventListener('click', () => {
-  closeModal();
-  game.classList.add('hidden');
-})
+  _userLogin() {
+    const accs = JSON.parse(localStorage.getItem('Accounts'));
 
-back.addEventListener('click', function() {
-  closeModal();
-  game.classList.add('hidden');
-  console.log('cheguei');
-})
-
-restart.addEventListener('click', function(){
-  closeModal();
-  init();
-})
-
-menu.addEventListener('mouseover', changeOpacity.bind(0.3));
-menu.addEventListener('mouseout', changeOpacity.bind(1));
-
-function changeOpacity(e, opacity) {
-  const menuList = document.querySelectorAll('.btn-menu');
-  if (e.target.classList.contains('btn-menu')){
-    menuList.forEach(el => {
-      if (el === e.target) return;
-      el.style.opacity = this;
+    accs.forEach(acc => {
+      if(acc.username === inputUser.value){
+        if(acc.password === inputPass.value){
+          this.currentUser = inputUser.value;
+          console.log(this.currentUser);
+          this._closeModal();
+          this._show(btnStart, btnLogoff)
+          this._hide(btnLogin, btnSignUp)
+        } else {this._warn('Não deu mt certo não, meu patrão, ve se ta tudo certo aí');}
+      } else {this._warn('Não deu mt certo não, meu patrão, ve se ta tudo certo aí');}
     })
+
+  }
+
+  _userLogoff() {
+    this._hide(btnStart, btnLogoff);
+    this._show(btnLogin, btnSignUp);
+    this.currentUser = '';
+  }
+
+  _createAccount() {
+    if(
+      inputUser.value.length <= 16 &&
+      inputPass.value.length > 5
+      ){
+        const accs = JSON.parse(localStorage.getItem('Accounts'));
+        if(accs.some(acc => acc.username === inputUser.value)){
+          this._warn('Esse nome de usuário já existe')
+          return
+        }
+        const acc = new Account(inputUser.value, inputPass.value);
+        accs.push(acc);
+        localStorage.setItem('Accounts', JSON.stringify(accs));
+        console.log(accs);
+        this._closeModal();
+      } else {
+        console.log('não fode, porra');
+        this._warn('senha deve conter ao menos 6 caracteres')
+        return
+      }  
+  }
+
+  _showHighscores() {
+    this._show(highscoresModal, overlay);
+    const table = highscoresModal.querySelector('table');
+    const accs = JSON.parse(localStorage.getItem('Accounts'));
+    accs.sort((a, b) => b.highscore - a.highscore);
+
+    table.innerHTML = `
+      <tr>
+        <th>Rank</th>
+        <th>Jogador</th>
+        <th>Maior Pontuação</th>
+      </tr>
+    `
+    accs.forEach((user, i) => {
+      table.insertAdjacentHTML('beforeend', `
+        <tr>
+          <td>${i+1}°</td>
+          <td>${user.username}</td>
+          <td class="score">${user.highscore}</td>
+        </tr>
+      `)
+    })
+
+  }
+
+  _userShowLoginModal() {
+    modalTittle.textContent = 'Entrar';
+    submitLogin.classList.remove('hidden');
+    submitSignUp.classList.add('hidden');
+    this._showSignModal();
+  }
+
+  _userShowSignUpModal() {
+    modalTittle.textContent = 'Cadastrar'
+    submitSignUp.classList.remove('hidden');
+    submitLogin.classList.add('hidden');
+    this._showSignModal();
+  }
+
+  _showSignModal() {
+    this._show(modalSignInUp, overlay);
+  }
+
+  _warn(str){
+    this._show(warn)
+    warn.textContent =  str;
+  }
+
+  _changeOpacity(e, opacity) {
+    const menuList = document.querySelectorAll('.btn-menu');
+    if (e.target.classList.contains('btn-menu')){
+      menuList.forEach(el => {
+        if (el === e.target) return;
+        el.style.opacity = this;
+      })
+    }
   }
 }
 
-function closeModal() {
-  setTimeout(function(){
-    modal.classList.add('hidden');
-    overlay.classList.add('hidden');
-  }, 500)
-  modal.classList.add('opacity');
-  overlay.classList.add('opacity')
-  }
+const app = new App();

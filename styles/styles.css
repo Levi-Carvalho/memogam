@@ -43,7 +43,7 @@
   z-index: 15;
   top: 50%;
   left: 50%;
-  color: #c369d4;
+  color: #de83f0;
   overflow: hidden;
   font-family: 'Ubuntu', sans-serif;
   transform: translate(-50%, -60%);
@@ -51,8 +51,9 @@
   .modal .modal-h1 {
     font-size: 2.2em;
     background-color: rgba(66, 40, 90, 0.9);
-    padding: 15px;
-    margin-bottom: 180px; }
+    padding: 15px; }
+  .modal .over-ctn {
+    margin-TOP: 180px; }
 
 .option-end {
   display: block;
@@ -65,6 +66,60 @@
   margin-left: 15px; }
   .option-end:hover {
     color: #a444c2; }
+
+.login-box {
+  margin-top: 2em; }
+  .login-box .submit, .login-box .input {
+    height: 2em;
+    font-size: 1.2em;
+    display: block;
+    margin: auto;
+    margin-top: 1em; }
+  .login-box .submit {
+    border-radius: 5px;
+    border: 1px solid black;
+    font-weight: bold;
+    color: inherit;
+    width: 13em;
+    background-color: #a444c2; }
+    .login-box .submit:hover {
+      background-color: #b953d8; }
+
+.warning {
+  text-align: center;
+  color: red;
+  background-color: rgba(240, 248, 255, 0.836);
+  padding: 5px 0; }
+
+.show-highscores .modal-h1 {
+  text-align: center; }
+
+.show-highscores table {
+  margin: auto;
+  border-collapse: collapse;
+  color: #deb3eb; }
+.show-highscores th, .show-highscores td {
+  height: 16px;
+  padding: 5px 8px; }
+.show-highscores td.score {
+  text-align: right;
+  padding-right: 20px; }
+.show-highscores .table-cnt {
+  height: 280px;
+  overflow-y: scroll;
+  background: rgba(66, 40, 90, 0.9); }
+
+.table-cnt::-webkit-scrollbar {
+  width: 8px; }
+
+.table-cnt::-webkit-scrollbar-track {
+  background: #481c55;
+  border: 1px solid #582268; }
+
+.table-cnt::-webkit-scrollbar-thumb {
+  background-color: #622674;
+  border-right: 1px solid #582268;
+  border-left: 1px solid #582268; }
 
 * {
   margin: 0;
@@ -149,9 +204,6 @@ body {
   padding-top: 9px;
   padding-left: 25px; }
 
-.hidden {
-  display: none; }
-
 .opacity {
   opacity: 0%; }
 
@@ -176,5 +228,8 @@ body {
     border: none;
     font: inherit;
     color: inherit; }
+
+.hidden {
+  display: none !important; }
 
 /*# sourceMappingURL=styles.css.map */
